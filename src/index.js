@@ -37,8 +37,10 @@ class Sorter {
         for (let i = 0; i < indices.length; i++) {
             tempArray.push(this.array[indices[i]]);
         }
+        indices.sort(function (a, b) {
+            return a - b;
+        });
         tempArray.sort(this.ascendingOrder);
-        indices.sort();
         for (let i = 0; i < indices.length; i++) {
             this.array[indices[i]] = tempArray[i];
         }
