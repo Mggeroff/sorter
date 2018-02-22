@@ -1,31 +1,59 @@
 class Sorter {
-  constructor() {
-    // your implementation
-  }
+    constructor() {
+        // create empty array.
+        this.array = [];
+        // Sort numbers in an array in ascending order.
+        this.ascendingOrder = function (a, b) {
+            return a - b;
+        }
+    }
 
-  add(element) {
-    // your implementation
-  }
+    // add element and store it in any way inside
+    add(element) {
+        // push elements to created array.
+        this.array.push(element);
+    }
 
-  at(index) {
-    // your implementation
-  }
+    at(index) {
+        // return a specific element from array
+        return this.array[index];
+    }
 
-  get length() {
-    // your implementation
-  }
+    //  return the count of current elements
+    get length() {
+        // Return the count of current elements, which were added to Sorter instance via add method.
+        return this.array.length;
+    }
 
-  toArray() {
-    // your implementation
-  }
+    // return all elements in array
+    toArray() {
+        // Return all elements in array.
+        return this.array;
+    }
 
-  sort(indices) {
-    // your implementation
-  }
+    // 'sort' - takes indices of already added elements and sorts only these elements.
+    sort(indices) {
+        let tempArray = [];
+        for (let i = 0; i < indices.length; i++) {
+            tempArray.push(this.array[indices[i]]);
+        }
+        tempArray.sort(this.ascendingOrder);
+        indices.sort();
+        for (let i = 0; i < indices.length; i++) {
+            this.array[indices[i]] = tempArray[i];
+        }
+    }
 
-  setComparator(compareFunction) {
-    // your implementation
-  }
+    // setComparator - takes compareFunction as parameter and use it while sorting elements.
+    setComparator(compareFunction) {
+        // return this.array.sort(compareFunction);
+
+        /*
+        !!! no need in return anything
+            the function must just set the way we compare elements.
+        */
+        this.ascendingOrder = compareFunction;
+    }
 }
 
 module.exports = Sorter;
